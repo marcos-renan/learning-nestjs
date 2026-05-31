@@ -1,5 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { Task } from './entities/task.entity';
+import { CreateTaskDto } from './dto/create-task.dto';
+import { UpdateTaskDto } from './dto/update-task.dto';
 
 @Injectable()
 export class TasksService {
@@ -45,12 +47,13 @@ export class TasksService {
     return task;
   }
 
-  createTask(body: any){
+  createTask(createTaskDto: CreateTaskDto){
     const newId = this.tasks.length + 1;
 
     const newTask = {
       id: newId,
-      ...body
+      ...createTaskDto,
+      completed: false
     }
 
     this.tasks.push(newTask);
@@ -58,7 +61,7 @@ export class TasksService {
     return newTask;
   }
 
-  updateTask(id: string, body:any){
+  updateTask(id: string, updateTaskDto:UpdateTaskDto){
 
     const taskIndex = this.tasks.findIndex(task => task.id === Number(id));
 
@@ -71,7 +74,7 @@ export class TasksService {
 
     this.tasks[taskIndex] ={
       ... taskItem,
-      ... body,
+      ... updateTaskDto,
     }
 
     return this.tasks[taskIndex];
