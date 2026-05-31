@@ -79,11 +79,13 @@ export class TasksService {
 
   deleteTask(id:string){
 
-    const task = this.tasks.find(task => task.id === Number(id));
+    const taskIndex = this.tasks.findIndex(task => task.id === Number(id));
 
-    if(!task){
+    if(taskIndex < 0){
       throw new NotFoundException("A tarefa não existe.");
     }
+
+    this.tasks.splice(taskIndex, 1);
 
     return `Tarefa com id:${id} deletada`;
   }
