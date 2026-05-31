@@ -18,4 +18,8 @@ export class TasksService {
   createTask(body: any){
     return body;
   }
+
+  updateTask(id: string, body:any){
+    return `Tarefa com nome ${body.name} e com id:${id} atualizada`;
+  }
 }
