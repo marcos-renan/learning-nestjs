@@ -22,4 +22,8 @@ export class TasksService {
   updateTask(id: string, body:any){
     return `Tarefa com nome ${body.name} e com id:${id} atualizada`;
   }
+
+  deleteTask(id:string){
+    return `Tarefa com id:${id} deletada`;
+  }
 }
