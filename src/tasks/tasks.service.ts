@@ -14,4 +14,8 @@ export class TasksService {
       id:1, task: `Tarefa com id:${id}`
     }]
   }
+
+  createTask(body: any){
+    return body;
+  }
 }
