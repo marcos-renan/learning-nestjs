@@ -8,4 +8,10 @@ export class TasksService {
       id:1, task: "Comprar pão"
     }]
   }
+
+  findOneTask(id:string){
+    return [{
+      id:1, task: `Tarefa com id:${id}`
+    }]
+  }
 }
