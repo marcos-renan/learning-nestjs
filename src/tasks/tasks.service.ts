@@ -37,8 +37,8 @@ export class TasksService {
     return this.tasks;
   }
 
-  findOneTask(id:string){
-    const task = this.tasks.find(task => task.id === Number(id));
+  findOneTask(id:number){
+    const task = this.tasks.find(task => task.id === id);
 
     if(!task){
       throw new NotFoundException("A tarefa não existe.");
@@ -61,9 +61,9 @@ export class TasksService {
     return newTask;
   }
 
-  updateTask(id: string, updateTaskDto:UpdateTaskDto){
+  updateTask(id: number, updateTaskDto:UpdateTaskDto){
 
-    const taskIndex = this.tasks.findIndex(task => task.id === Number(id));
+    const taskIndex = this.tasks.findIndex(task => task.id === id);
 
     if(taskIndex < 0){
       throw new NotFoundException("A tarefa não existe.");
@@ -80,9 +80,9 @@ export class TasksService {
     return this.tasks[taskIndex];
   }
 
-  deleteTask(id:string){
+  deleteTask(id:number){
 
-    const taskIndex = this.tasks.findIndex(task => task.id === Number(id));
+    const taskIndex = this.tasks.findIndex(task => task.id === id);
 
     if(taskIndex < 0){
       throw new NotFoundException("A tarefa não existe.");
